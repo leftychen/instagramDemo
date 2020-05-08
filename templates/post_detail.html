@@ -1,11 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/insta.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
 <div class="row">
     <div class="col-xs-12">
-        <h3>
-            {{object.title}}
-        </h3>
-        <span class="float-right">
-      <!-- route to root path -->
-      <img src="/{{object.image}}" class="img-fluid">
-  </span>
+        <h2 contenteditable="true">{{object.title}}</h2>
+
+        <img src="/{{object.image}}" class="fit-show">
     </div>
 </div>
+
+<hr>
+<div class="row">
+    <div class="column">
+        <a href="{%url 'update_post' object.id%}">
+            <button type="button" class="btn btn-primary">
+                Edit Post
+            </button>
+        </a>
+        <button class="btn btn-primary" data-toggle="modal" type="button"
+                data-target="#delete_modal">
+            Delete Post
+        </button>
+    </div>
+
+</div>
+
+</body>
+<!-- Popup Window -->
+
+<!-- Modal Delete -->
+<div class="modal fade" id="delete_modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                Delete this post?
+            </div>
+            <div class="modal-footer">
+                <button type='button' class="btn btn-secondary" data-dismiss='modal'>Cancel</button>
+                <a href="{%url 'delete_post' id=object.id %}">
+                    <button type="button" class="btn btn-primary">Delete</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>
