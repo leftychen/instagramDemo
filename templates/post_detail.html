@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/insta.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
+{% extends 'base.html' %}
+{% block content %}
 <div class="row">
     <div class="col-xs-12">
         <h2 contenteditable="true">{{object.title}}</h2>
@@ -34,7 +24,6 @@
 
 </div>
 
-</body>
 <!-- Popup Window -->
 
 <!-- Modal Delete -->
@@ -54,5 +43,4 @@
     </div>
 </div>
 
-
-</html>
+{% endblock %}

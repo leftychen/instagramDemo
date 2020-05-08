@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/insta.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+<div class="row">
+    <div class="col-sm-12">
+        {% block additionalBtn %}
+        {% endblock %}
+        <span class="float-right">
+            <label>Hi, {{request.user.username}}</label>
+            <a href="{% url 'logout' %}">
+                <button type="submit" class="btn btn-secondary">
+                Logout
+                </button>
+        </a>
+        </span>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-sm-12">
+        <a href="{% url 'login' %}">
+            <button type="submit" class="btn btn-primary float-right">
+                Login
+            </button>
+        </a>
+    </div>
+</div>
+{% endif %}
+
+<hr>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
