@@ -1,0 +1,53 @@
+<div class="navbar navbar-expand-sm bg-info navbar-light">
+
+    {% if request.user.is_authenticated %}
+
+    <h5 class="name-header mr-auto">
+        {% if request.user.first_name.strip %}
+        Hi, {{request.user.first_name}}
+        {% else %}
+        Hi, {{request.user.username}}
+        {% endif %}
+    </h5>
+
+    <ul class="navbar-nav justify-content-center ml-auto">
+        <li class="nav-item">
+            <a href="#">
+                {% if request.user.profile_pic %}
+                <img class="profile_pic ml-auto" src="/{{request.user.profile_pic}}">
+                {% else %}
+                <label class="fas fa-paw fa-2x"></label>
+                {% endif %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fas fa-home fa-2x" href="{% url 'posts' %}">
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fas fa-plus-square fa-2x"
+               href="{% url 'make_post' %}"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fas fa-sign-out-alt fa-2x" href="{% url 'logout' %}"></a>
+        </li>
+    </ul>
+    {% else %}
+
+    <h5 class="name-header mr-auto">
+        Hey, What's up?
+    </h5>
+
+    <ul class="navbar-nav justify-content-center ml-auto">
+
+        <li class="nav-item">
+            <a class="nav-link fas fa-sign-in-alt fa-2x" href="{% url 'login' %}"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fas fa-user-plus fa-2x"
+               href="{% url 'signup' %}"></a>
+        </li>
+    </ul>
+    {% endif %}
+</div>
+<hr>

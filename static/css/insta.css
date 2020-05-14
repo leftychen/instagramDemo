@@ -1,23 +1,70 @@
- body {
-            margin: 25px;
-        }
+body {
+    background-color: whitesmoke;
+}
 
-        .column {
-            padding: 5px;
-        }
-        img.fit-show{
-            height: auto;
-            width: 100%;
-        }
-        div.polaroid {
-            width: fit-content;
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            margin-bottom: 15px;
-            padding: 5px;
-        }
+.content-wrapper {
+    background-color: white;
+    margin: 5px;
+}
 
-        div.container {
-            text-align: center;
-            padding: 5px 10px;
-        }
+.content-wrapper column {
+    padding: 5px;
+}
+
+
+.card-index-show {
+    background-color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem ;
+
+}
+
+/* img setup */
+.postcard {
+    object-fit: cover;
+    object-position: center;
+    height: auto;
+    width: 100%;
+}
+
+img.fit-show {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+}
+.profile_pic {
+    height: auto;
+    width: 50px;
+    border-radius: 18px;
+}
+
+/* h tag setup */
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    height: 3px;
+    background-color: lightgray;
+}
+
+h5.name-header {
+    font-weight: bold;
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    color: lightcyan;
+}
+
+.card-title-adj {
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 5px;
+    font-size: small
+}
+.like {
+    cursor: pointer;
+}
+.show-color-heart{
+    color: Tomato;
+}

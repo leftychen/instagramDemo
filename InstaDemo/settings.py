@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Insta',
-    'imagekit'
+    'imagekit',
+    'crispy_forms'
 
 ]
 
@@ -125,3 +126,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'posts'
 LOGOUT_REDIRECT_URL = 'login'
+AUTH_USER_MODEL = 'Insta.InstaUser'

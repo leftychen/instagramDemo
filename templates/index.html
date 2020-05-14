@@ -1,35 +1,53 @@
 {% extends 'base.html' %}
-
-{% block additionalBtn %}
-
-<a href="{% url 'make_post' %}">
-    <button type="submit" class="btn btn-primary float-left">
-        Make New Post
-    </button>
-</a>
-
-{% endblock %}
-
+{% load custom_tags %}
 {% block content %}
-<div class="row">
-    {% for post in post_list %}
-    <div class="column">
-        <div class="polaroid">
-            <a href="{% url 'post_detail' post.id %}">
-                <!-- route to root path -->
-                <img src="/{{post.image}}"
-                     style="
-                         object-fit: contain;
-                         object-position: center;
-                         height: 150px;
-                         width: 150px;">
-                <div class="container">
-                    <p>{{post.title}}</p>
-                </div>
-            </a>
-        </div>
-    </div>
 
-    {% endfor %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% for post in post_list %}
+        <div class="col-md-6">
+            <div class="card card-index-show view-update {{post.pk}}">
+                <div class="card-header bg-light">
+
+                    <a href="#">
+                        {% if post.author.profile_pic %}
+                        <img class="profile_pic ml-auto" src="/{{post.author.profile_pic.url}}">
+                        {% else %}
+                        <label class="fas fa-paw fa-2x"></label>
+                        {% endif %}
+                        {{post.author}}
+                    </a>
+                    <span class="datetime ml-auto">
+                        {{post.posted_on|timesince}}
+                    </span>
+                </div>
+
+                <a href="{% url 'post_detail' post.id %}">
+                    <!-- route to root path -->
+                    <img class="card-img-top postcard" src="/{{post.image}}">
+                </a>
+                <div class="card-body" style="height: 100%; width: 100%">
+
+                    <div class="card-title likes {{post.pk}}">
+                        {% if post.get_like_count %}
+                        {{post.get_like_count}} like{% if post.get_like_count > 1 %}s {% endif %}
+                        {% endif %}
+                    </div>
+                    <section>
+                        <i class="{% has_user_liked_post post user %} like submit-like">
+                        </i>
+                        <div class="hidden-data {{ post.pk }}" style="display: none;">
+                            <span class="post-pk">{{post.pk}}</span>
+                        </div>
+                    </section>
+
+                    <p class="card-text">post description</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endblock %}
+
+{% endblock content %}
